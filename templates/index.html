@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <title></title>
+        <link rel='stylesheet' href="{{url_for('static', filename='css/style.css')}}">
+    </head>
+    <body>
+        <div id="row">            
+            <div id="chat" class="column2">
+                <textarea id="dialog" readonly></textarea>
+                <input type="text" id="message" name="message" placeholder="Enter your message">
+                <button id="submit" type="button">Send</button>
+            </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+        <script src="{{url_for('static',filename='js/main.js')}}"></script>
+    </body>
+</html>
