@@ -28,7 +28,8 @@ client = QdrantClient(
 )
 
 # 初始化向量庫（僅用於查詢）
-embedding_function = SentenceTransformerEmbeddings(model_name="all-MiniLM-L6-v2")
+embedding_function = SentenceTransformerEmbeddings(
+    model_name="all-MiniLM-L6-v2")
 
 qdrant = Qdrant(
     client=client,
@@ -59,17 +60,21 @@ gemini_model = genai.GenerativeModel(
 )
 
 # 主畫面
+
+
 @app.route("/")
 def home():
     return render_template("index.html")
 
 # 呼叫LLM回答
+
+
 @app.route("/call_gemini", methods=["POST"])
 def call_gemini():
     if request.method == "POST":
         print("POST!")
-        data = request.form        
-        question = data["message"] # 使用者問題
+        data = request.form
+        question = data["message"]  # 使用者問題
         print("使用者問題：" + question)
 
         # 從 Qdrant 查詢最相關的向量內容
@@ -80,7 +85,7 @@ def call_gemini():
 
         # 整理 context（將每筆內容合併為一段文字）
         context = "\n\n".join(
-                    f"內容: {doc.page_content}\n相關資訊: {doc.metadata}" for doc in results)
+            f"內容: {doc.page_content}\n相關資訊: {doc.metadata}" for doc in results)
         print("回傳：" + context)
 
         # prompt 格式
@@ -90,11 +95,11 @@ def call_gemini():
                     </context>
                     問題：{question}
                     請用繁體中文簡潔回答，並在回答最後附上購買連結。"""
-        
+
         # LLM回應
         response = gemini_model.generate_content(prompt)
         print(response)
         return response.text
 
-if __name__ == "__main__":
-    app.run()
+# if __name__ == "__main__":
+ #   app.run()
