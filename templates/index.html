@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <title></title>
+        <link rel='stylesheet' href="{{url_for('static', filename='css/style.css')}}">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    </head>
+    <body>
+        <div class="talk_con">
+        <div class="talk_show" id="words">
+            
+        </div>
+        <div class="talk_input">  
+            <input type="text" class="talk_word" id="talkwords" placeholder="Enter your message">
+            <div class="ajax-button">
+                <div class="fa fa-check done"></div>
+                <input id="submit" class="submit" type="button" value="Submit" />
+            </div>
+        </div>
+    </div>
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script src="{{url_for('static',filename='js/main.js')}}"></script>
+    </body>
+</html>
